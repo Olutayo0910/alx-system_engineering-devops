@@ -4,37 +4,56 @@
 ## Specifics of the Infrastructure:
 
 ### What is a server?
-A server is a powerful computer designed to provide services, data, or resources to other computers over a network. In this case, we have one server responsible for hosting the website.
+A server is a powerful computer designed to provide services, data,
+or resources to other computers over a network. In this case, we have
+one server responsible for hosting the website.
 
 ### Role of the Domain Name:
-The domain name, in this case, "foobar.com," serves as a human-readable address that maps to the server's IP address (8.8.8.8). It makes it easier for users to access the website instead of remembering an IP address.
+The domain name, in this case, "foobar.com," serves as a human-readable
+address that maps to the server's IP address (8.8.8.8). It makes it
+easier for users to access the website instead of remembering an IP address.
 
 ### Type of DNS Record for www.foobar.com:
-The DNS record for "www" in www.foobar.com is a CNAME (Canonical Name) record. It points to the same IP address as "foobar.com," effectively directing requests to the same server.
+The DNS record for "www" in www.foobar.com is a CNAME (Canonical Name)
+record. It points to the same IP address as "foobar.com," effectively
+directing requests to the same server.
 
 ### Role of the Web Server (Nginx):
-The web server (Nginx) handles incoming HTTP requests from users' browsers. It serves as the entry point for web traffic.
-It routes requests to the application server and serves static content like HTML, CSS, and JavaScript.
+The web server (Nginx) handles incoming HTTP requests from users' browsers.
+It serves as the entry point for web traffic.
+It routes requests to the application server and serves static content like
+HTML, CSS, and JavaScript.
 
 ### Role of the Application Server:
-The application server executes server-side code (your codebase) to generate dynamic content. It communicates with the database to retrieve or store data.
-It sends responses back to the web server, which then delivers the content to the user's browser.
+The application server executes server-side code (your codebase) to generate
+dynamic content. It communicates with the database to retrieve or store data.
+It sends responses back to the web server, which then delivers the content to
+the user's browser.
 
 ### Role of the Database (MySQL):
-The database (MySQL) stores and manages data required by the application. It can include user data, content, and more.
-The application server communicates with the database to retrieve or store data as needed.
+The database (MySQL) stores and manages data required by the application. It can
+include user data, content, and more.
+The application server communicates with the database to retrieve or store data as
+needed.
 
 ### Communication with the User's Computer:
-The server communicates with the user's computer through the HTTP protocol. When the user requests www.foobar.com, the server responds with the website content, which is displayed in the user's web browser.
+The server communicates with the user's computer through the HTTP protocol. When
+the user requests www.foobar.com, the server responds with the website content,
+which is displayed in the user's web browser.
 
 ## Issues with this Infrastructure:
 
 ### Single Point of Failure (SPOF):
-This infrastructure has a single server, making it vulnerable to downtime in case of server hardware failure, network issues, or other problems. To address this, a redundant or load-balanced server setup would be more resilient.
+This infrastructure has a single server, making it vulnerable to downtime in case of
+server hardware failure, network issues, or other problems. To address this, a
+redundant or load-balanced server setup would be more resilient.
 
 ### Downtime during Maintenance:
-Deploying new code or making changes may require restarting the web server. During this time, the website may be temporarily unavailable to users. This downtime can be mitigated with load balancing and redundancy.
+Deploying new code or making changes may require restarting the web server. During
+this time, the website may be temporarily unavailable to users. This downtime can be
+mitigated with load balancing and redundancy.
 
 ### Scalability Limitations:
-This infrastructure may struggle to handle a significant increase in incoming traffic. Scaling horizontally (adding more servers) or vertically (upgrading server resources) would be necessary to accommodate traffic spikes effectively.
-
+This infrastructure may struggle to handle a significant increase in incoming traffic.
+Scaling horizontally (adding more servers) or vertically (upgrading server resources)
+would be necessary to accommodate traffic spikes effectively.
