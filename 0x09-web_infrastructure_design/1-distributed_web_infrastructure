@@ -1,0 +1,38 @@
+Image link: https://imgbox.com/7qveiY5M
+
+Explanation of the Infrastructure:
+
+Load Balancer:
+
+The load balancer (HAproxy) is introduced to distribute incoming web traffic between two servers, Server1 and Server2. This ensures high availability and load distribution.
+Distribution Algorithm: The load balancer is configured with a round-robin algorithm, distributing requests evenly between the two servers.
+Server1 and Server2:
+
+Two servers are added for redundancy and to eliminate the Single Point of Failure (SPOF).
+Active-Active Setup: Both servers are actively serving requests, making it an Active-Active setup. This means both servers are engaged in processing user requests simultaneously.
+Web Server:
+
+Nginx acts as the web server, handling incoming HTTP requests.
+Nginx routes requests to the application server and serves static content, such as HTML, CSS, and JavaScript.
+Application Server:
+
+The application server executes server-side code (your codebase) to generate dynamic content.
+It communicates with the database to retrieve or store data.
+Sends responses back to the web server, which delivers content to users' browsers.
+Database Primary and Replica:
+
+MySQL is used for the database. A Primary-Replica (Master-Slave) cluster is implemented for data replication.
+Data synchronization: The Primary node handles write operations, while the Replica node replicates data from the Primary node for read operations.
+Data consistency and failover: In the event of Primary node failure, the Replica can be promoted to Primary to ensure continuous database operation.
+Issues with this Infrastructure:
+
+Single Point of Failure (SPOF):
+
+Although Server1 and Server2 are added for redundancy, a single load balancer remains a potential SPOF. Consider implementing a secondary load balancer for high availability.
+Security Issues:
+
+Security concerns include the absence of a firewall to protect the servers and the lack of HTTPS, which is essential for securing data in transit. Implement a firewall and SSL/TLS for encryption.
+No Monitoring:
+
+The infrastructure lacks a monitoring system to track the performance and health of servers, web applications, and databases. Monitoring tools are necessary to identify and address issues promptly.
+In summary, this infrastructure design introduces redundancy, load balancing, and a Primary-Replica database cluster for high availability and data consistency. However, it still has some critical issues that need to be addressed, including the SPOF, security, and the absence of monitoring.
