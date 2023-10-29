@@ -1,0 +1,70 @@
+Image link: https://imgbox.com/rssELyDB
+
+Explanation of the Infrastructure:
+
+Load Balancer:
+
+The load balancer is responsible for distributing incoming web traffic
+among three web servers (Server1, Server2, Server3). This ensures high
+availability and load distribution.
+
+Web Servers:
+
+Each server has a web server (e.g., Nginx) to handle incoming HTTP
+requests. The web servers serve as the entry point for web traffic,
+routing requests to application servers and serving static content.
+
+Firewalls:
+
+Three firewalls are added to enhance security. Firewalls are used to
+control and monitor incoming and outgoing network traffic, protecting
+the servers from unauthorized access and threats.
+
+Application Servers:
+
+Application servers execute server-side code, generating dynamic content
+for the website. They communicate with the databases to retrieve or store
+data and handle application logic.
+
+Databases:
+
+There is one primary MySQL database and two replica databases for data
+redundancy and high availability. Data consistency and failover are ensured
+through replication.
+
+SSL Certificate:
+
+An SSL certificate is added to serve www.foobar.com over HTTPS, providing
+encrypted and secure communication between the website and users.
+
+Monitoring Clients:
+
+Three monitoring clients (e.g., Sumo Logic) are employed to collect and analyze
+data about the system's performance, security, and issues.
+
+Issues with this Infrastructure:
+
+Terminating SSL at the Load Balancer Level:
+
+Terminating SSL at the load balancer level can be an issue because it adds a
+potential SPOF. If the load balancer fails, all SSL termination also fails. To
+address this, consider using SSL termination on the web servers themselves.
+
+Single MySQL Server Capable of Accepting Writes:
+
+Having only one MySQL server capable of accepting write operations can be
+problematic. If this server fails, write operations are disrupted. Implement a
+multi-node MySQL cluster with automatic failover to address this issue.
+
+Servers with the Same Components:
+
+All servers having the same components (database, web server, and application
+server) might lead to inefficiency in resource utilization. Consider optimizing
+the server setup based on their roles, e.g., separating web servers and database
+servers.
+
+In summary, this infrastructure design focuses on security, high availability, and
+monitoring. It uses firewalls to protect the system, SSL for secure communication,
+and monitoring clients to collect data for analysis. However, it still has potential
+issues, such as SSL termination at the load balancer level, single MySQL write server,
+and resource inefficiency on identical servers.
