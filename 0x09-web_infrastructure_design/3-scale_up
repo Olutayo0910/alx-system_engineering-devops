@@ -1,0 +1,58 @@
+Image link: mgbox.com/hPEKvJOn
+
+Front-end Load Balancer (HAproxy Cluster):
+
+Two front-end load balancers (HAproxy) configured as a cluster.
+They distribute incoming requests and provide redundancy.
+Primary Servers:
+
+One web server, one application server, and one database server serve as primary servers.
+Backup Server:
+
+A single backup server that can serve as a failover for the web server, application server, and database server in case any of the primary servers experience issues.
+Firewalls:
+
+Four firewalls placed strategically to secure the network and protect against unauthorized access and threats.
+SSL Certificate:
+
+The SSL certificate is installed on the load balancers to encrypt traffic and ensure secure communication.
+Monitoring Clients:
+
+Four monitoring clients (data collectors) are deployed to collect data related to system health, performance, and security.
+Specifics about the Infrastructure:
+
+Front-end Load Balancers (HAproxy Cluster):
+
+Load balancers distribute incoming traffic across primary servers for load distribution and high availability.
+Configured as a cluster to ensure redundancy. If one load balancer fails, the other takes over.
+Primary Servers:
+
+The web server serves static content.
+The application server manages server-side code for dynamic content.
+The database server stores and manages application data.
+Backup Server:
+
+The backup server is capable of serving as a failover for the web server, application server, and database server in case any of the primary servers experience issues.
+Firewalls:
+
+Firewalls are placed at critical network points to enforce security policies and protect the infrastructure from unauthorized access and threats.
+SSL Certificate:
+
+The SSL certificate is installed on the load balancers to enable secure, encrypted communication between clients and the infrastructure.
+Monitoring Clients:
+
+Monitoring clients are responsible for collecting data on system health, performance, and security. They help identify and address issues proactively.
+Issues with this Infrastructure:
+
+Single Point of Failure (SPOF):
+
+While the backup server enhances redundancy for all primary servers, it's important to ensure proper failover configurations and monitoring to minimize the risk of a single point of failure.
+Scalability Limitations:
+
+Scaling might be a challenge when handling a significant increase in incoming traffic. Adding more servers and optimizing the load balancers may be required.
+Security:
+
+The infrastructure includes firewalls and SSL encryption to enhance security, but additional security measures like firewall rules and monitoring are essential.
+Monitoring:
+
+Monitoring tools and processes should be in place to ensure system health, performance, and security.
