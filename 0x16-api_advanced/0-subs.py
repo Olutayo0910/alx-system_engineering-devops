@@ -23,7 +23,7 @@ def number_of_subscribers(subreddit):
         ])
     }
     result = requests.get(
-        '{}/r/{}/about/.json'.format(BASE_URL, subreddit),
+        '{}/r/{}/about/.json'.format(URL_BASE, subreddit),
         headers=api_headers,
         allow_redirects=False
     )
